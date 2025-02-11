@@ -39,13 +39,41 @@ export default defineComponent({
 
     const randomBets = ref(betList.value.sort(() => 0.5 - Math.random()).slice(0, 5))
 
+    const selectOver = (bet) => {
+      bet.picked = 'over'
+    }
+
+    const selectUnder = (bet) => {
+      bet.picked = 'under'
+    }
+
     return {
       bets: randomBets,
+      selectOver,
+      selectUnder,
     }
+  },
+  components: {
+    RouterLink,
   },
 })
 </script>
 
+<style>
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.over,
+.under {
+  background-color: #42b983;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+</style>
 <style>
 .cards-container {
   display: flex;
