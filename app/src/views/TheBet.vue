@@ -1,11 +1,18 @@
 <template>
-  <div class="about">
-    <WuhBets v-for="item in items" :key="item.name" :item="item"
+  <div class="about bg-green-500">
+    <HomociHomoci />
+    <WuhBets v-for="bet in displayedBets" :key="bet.name" :item="bet"
       ><button
         class="btn btn-primary bg-green-600 hover:bg-green-700 mt-4 rounded-lg shadow-sm outline outline-2 outline-black"
-        @click="addtoBets(item)"
+        @click="Over(item)"
       >
-        Add to Cart
+        Pick The Over
+      </button>
+      <button
+        class="btn btn-primary bg-green-600 hover:bg-green-700 mt-4 rounded-lg shadow-sm outline outline-2 outline-black"
+        @click="Under(item)"
+      >
+        Pick the Under
       </button></WuhBets
     >
   </div>
@@ -21,17 +28,11 @@
 }
 </style>
 
-<script>
+<script setup>
 import FwehBets from '@/components/FwehBets.vue'
 import HomociHomoci from '@/components/HomociHomoci.vue'
 import WuhBets from '@/components/WuhBets.vue'
-
-export default {
-  components: {
-    FwehBets,
-    HomociHomoci,
-    WuhBets,
-  },
-  setup() {},
-}
+import { ref } from 'vue'
+import { bets } from '../arrays/bets.js'
+const displayedBets = ref([...bets].sort(() => 0.5 - Math.random()).slice(0, 5))
 </script>

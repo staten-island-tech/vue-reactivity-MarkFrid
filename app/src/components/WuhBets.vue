@@ -1,66 +1,25 @@
 <template>
-  <div>
-    <nav class="bg-gray-800">
-      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-          <div class="flex space-x-4">
-            <RouterLink
-              to="/HomeView"
-              class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-              >Home</RouterLink
-            >
-            <RouterLink
-              to="/TheBet"
-              class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-              >Did it hit?</RouterLink
-            >
-          </div>
-        </div>
-      </div>
-    </nav>
-    <div class="cards-container">
-      <div class="card" v-for="(bet, index) in bets" :key="index">
-        <h2>{{ bet.sport }}</h2>
-        <p>{{ bet.bet }}</p>
-        <slot></slot>
-      </div>
-    </div>
+  <div class="card">
+    <h2>{{ item.sport }}</h2>
+    <p>{{ item.bet }}</p>
+    <slot></slot>
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from 'vue'
+<script setup>
+import { ref } from 'vue'
+import { bets } from '../arrays/bets.js'
 import { RouterLink } from 'vue-router'
-import { bets } from '@/arrays/bets.js'
 
-export default defineComponent({
-  name: 'BetCards',
-  setup() {
-    const betList = ref(bets)
-
-    const randomBets = ref(betList.value.sort(() => 0.5 - Math.random()).slice(0, 5))
-
-    const selectOver = (bet) => {
-      bet.picked = 'over'
-    }
-
-    const selectUnder = (bet) => {
-      bet.picked = 'under'
-    }
-
-    return {
-      bets: randomBets,
-      selectOver,
-      selectUnder,
-    }
-  },
-  components: {
-    RouterLink,
-  },
-})
 defineProps({
-  item: Object,
-  number: Number,
+  item: {
+    type: Object,
+    required: true,
+  },
+  number: {
+    type: Number,
+    required: true,
+  },
 })
 </script>
 
@@ -92,9 +51,5 @@ defineProps({
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 500px;
-}
-
-nav {
-  margin-bottom: 16px;
 }
 </style>
