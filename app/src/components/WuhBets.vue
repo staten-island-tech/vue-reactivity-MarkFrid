@@ -22,6 +22,7 @@
       <div class="card" v-for="(bet, index) in bets" :key="index">
         <h2>{{ bet.sport }}</h2>
         <p>{{ bet.bet }}</p>
+        <slot></slot>
       </div>
     </div>
   </div>
@@ -56,6 +57,10 @@ export default defineComponent({
   components: {
     RouterLink,
   },
+})
+defineProps({
+  item: Object,
+  number: Number,
 })
 </script>
 
