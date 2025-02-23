@@ -1,20 +1,39 @@
 <template>
-  <div class="about bg-green-500">
+  <div class="about bg-[#001f3f]">
     <HomociHomoci />
     <WuhBets v-for="bet in displayedBets" :key="bet.name" :item="bet"
       ><button
-        class="btn btn-primary bg-green-600 hover:bg-green-700 mt-4 rounded-lg shadow-sm outline outline-2 outline-black"
+        class="btn btn-primary bg-[#001f3f] hover:bg-[#00155f] mt-4 rounded-lg shadow-sm outline outline-2 outline-black text-[#C0C0C0]"
         @click="Over(item)"
       >
         Pick The Over
       </button>
       <button
-        class="btn btn-primary bg-green-600 hover:bg-green-700 mt-4 rounded-lg shadow-sm outline outline-2 outline-black"
+        class="btn btn-primary bg-[#001f3f] hover:bg-[#00155f] mt-4 rounded-lg shadow-sm outline outline-2 outline-black text-[#C0C0C0]"
         @click="Under(item)"
       >
         Pick the Under
       </button></WuhBets
     >
+    <div
+      class="shop-header fixed right-0 top-0 h-[100vh] w-[25vw] border-black border-[2px] bg-orange-400 flex flex-col items-center text-center overflow-y-auto"
+      ref="cartContainer"
+    >
+      <h2 class="text-2xl font-bold mt-5 mb-5">Shopping Cart</h2>
+      <ShoppingCart
+        v-for="item in cartSorted"
+        :key="item.name"
+        :item="item"
+        :number="quantityFinder(item)"
+        class="mb-5"
+        ><button
+          class="btn btn-primary bg-red-600 hover:bg-red-700 mt-4 rounded-lg shadow-sm outline outline-2 outline-black"
+          @click="removeFromCart(item)"
+        >
+          Remove
+        </button></ShoppingCart
+      >
+    </div>
   </div>
 </template>
 
