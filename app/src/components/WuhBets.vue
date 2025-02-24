@@ -15,14 +15,7 @@ import { bets } from '../arrays/bets.js'
 import { RouterLink } from 'vue-router'
 
 defineProps({
-  item: {
-    type: Object,
-    required: true,
-  },
-  number: {
-    type: Number,
-    required: true,
-  },
+  item: Object,
 })
 </script>
 
