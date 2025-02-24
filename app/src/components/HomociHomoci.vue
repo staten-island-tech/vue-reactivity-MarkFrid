@@ -2,6 +2,7 @@
   <div
     class="the-header h-[20vh] w-[75vw] bg-[#36454f] border-[2px] border-[#C0C0C0] fixed top-0 flex flex-col items-center justify-center text-center z-10"
   >
+    <h1 class="text-5xl font-bold mb-2 text-[#C0C0C0]">Look at the K channel</h1>
     <h1 class="text-3xl font-bold mb-2 text-[#C0C0C0]">Bet on random bets</h1>
     <h2 class="text-xs font-semibold text-[#C0C0C0]">*You have no control over the outcome*</h2>
   </div>
