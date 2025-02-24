@@ -3,8 +3,8 @@
     class="card bg-[#36454f] border-[2px] border-[#C0C0C0] flex flex-col items-center justify-center text-center z-10 mx-auto"
     :key="auto"
   >
-    <h2 class="text:[#C0C0C0]">{{ item.sport }}</h2>
-    <p class="text:[#C0C0C0]">{{ item.bet }}</p>
+    <h2 :style="{ color: '#C0C0C0' }">{{ item.sport }}</h2>
+    <p :style="{ color: '#C0C0C0' }">{{ item.bet }}</p>
     <slot></slot>
   </div>
 </template>
