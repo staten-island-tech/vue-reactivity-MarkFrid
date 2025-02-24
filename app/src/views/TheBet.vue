@@ -10,7 +10,7 @@
       </button>
       <button
         class="btn btn-primary bg-[#001f3f] hover:bg-[#00155f] mt-4 rounded-lg shadow-sm outline outline-2 outline-black text-[#C0C0C0]"
-        @click="Under(item)"
+        @click="Over(item)"
       >
         Pick the Under
       </button></WuhBets
@@ -54,4 +54,13 @@ import WuhBets from '@/components/WuhBets.vue'
 import { ref } from 'vue'
 import { bets } from '../arrays/bets.js'
 const displayedBets = ref([...bets].sort(() => 0.5 - Math.random()).slice(0, 5))
+const choice = ref([])
+
+function Over(bet) {
+  choice.value.push(bet)
+  console.log(choice.value)
+}
+function Under(bet) {
+  choice.value.splice(choice.value.indexOf(bet), 1)
+}
 </script>
